@@ -5,6 +5,8 @@ title = 'First post'
 date = '2022-08-21T21:02:41+12:00'
 +++
 
+## Thoughts
+
 When deciding on how my workflow for adding posts and deployment I wanted a few core things.
 
 - write posts in markdown
@@ -15,3 +17,7 @@ Since I've been writing a lot more Go recently, i found Hugo a good choice. It c
 The only hugo doesnt take care of out of the box is easy mostly hands off deploy.
 
 For deployment I chose github actions and a handy github action provider [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)
+
+## Whats next
+
+I've been working on a prototype for scripting part of Golang from Javascript using [v8go](https://github.com/rogchap/v8go). Not sure what I intend to get out of this yet or the bigger project but it sounds fun and challenging.
