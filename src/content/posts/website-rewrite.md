@@ -5,7 +5,7 @@ tags:
   - astro
 description: 'I rewrote my website using Astro'
 title: 'A year later and I rewrite my website'
-pubDate: '2023-09-10T00:00:00+12:00'
+pubDate: '2023-09-19T00:00:00+12:00'
 ---
 
 The title says it all. The second ever post is about how I rewrote my website using [Astro](https://astro.build/). I guess in the year this website/blog has been live I haven't got much use of out it.
