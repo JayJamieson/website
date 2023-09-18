@@ -1,0 +1,27 @@
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+:root {
+  --animate-duration: 1s;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
+}
+
+html {
+  background: #494f5c;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #e8eef2;
+  font-family: "Trebuchet MS", Verdana, "Verdana Ref", "Segoe UI", Candara,
+    "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
+#footnote-label {
+  display: none;
+}

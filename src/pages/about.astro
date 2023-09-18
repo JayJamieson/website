@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+
+type Props = CollectionEntry<"posts">["data"];
+
+const [title, description] = ["About", "Me myself and my code"];
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Header position="fixed bottom-0 w-full"/>
+    <main class="animated fadeIn site-main section-inner thin">
+      <article>
+        <h1 class="mt-6 mb-6 text-[2rem] font-bold">{title}</h1>
+        <div>
+          <p class="mt-4 mb-4">
+            I am Senior Software Engineer based in New Zealand. I have ADHD and
+            tend to start many passion projects with plenty of research. A lot of my
+						projects tend to focus on learning underlying technology used in real world
+						systems.
+          </p>
+          <p class="mt-4 mb-4">
+            I have mainly focus on writing backend systems and occasionaly touch
+            some front-end (this website being one of the front-ends 😅).
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
