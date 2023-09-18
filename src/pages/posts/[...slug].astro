@@ -1,0 +1,42 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts
+    .sort((a, b) => {
+      return a.data.pubDate.getTime() - b.data.pubDate.getTime();
+    })
+    .reverse()
+    .map((post, index, array) => {
+      const len = array.length;
+
+      const newerIndex = (index - 1) % len < 0 ? undefined : (index - 1) % len;
+			const olderIndex = (index + 1) % len === 0 ? undefined : (index + len + 1) % len;
+
+      const newer = newerIndex !== undefined ? array[newerIndex] : undefined;
+      const older = olderIndex !== undefined ? array[olderIndex] : undefined;
+
+      return {
+        params: { slug: post.slug },
+        props: { ...post, newer: newer?.slug, older: older?.slug },
+      };
+    });
+}
+type Props = CollectionEntry<"posts"> & { newer?: string; older?: string };
+
+const post = Astro.props;
+
+const { Content } = await post.render();
+const wordCount = post.body.split(" ").length;
+---
+
+<BlogPost
+  {...post.data}
+  newer={post.newer}
+  older={post.older}
+  wordCount={wordCount}
+>
+  <Content />
+</BlogPost>

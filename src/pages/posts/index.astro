@@ -1,0 +1,104 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection, type CollectionEntry } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+
+type Post = CollectionEntry<"posts">;
+
+const postsMap = (await getCollection("posts")).reduce(
+  (groups: Record<string, Post[]>, item: Post) => {
+    const name = `${item.data.pubDate.getFullYear()}`;
+    const group = groups[name] || (groups[name] = []);
+    group.push(item);
+    return groups;
+  },
+  {}
+);
+
+let keys: string[] = [];
+
+for (const key in postsMap) {
+  keys.push(key);
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+
+    <style>
+      .posts-group {
+				background-color: !pink;
+        display: flex;
+        margin-bottom: 1.9em;
+        line-height: normal;
+      }
+      .posts-group .post-year {
+        padding-top: 6px;
+        margin-right: 1.8em;
+        font-size: 1.6em;
+        opacity: 0.6;
+      }
+      .posts-group .post-year:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      .posts-group .posts-list {
+        flex-grow: 1;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .posts-group .post-item {
+        border-bottom: 1px #7d828a dashed;
+      }
+      .posts-group .post-item a {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 12px 0;
+      }
+      .posts-group .post-day {
+        flex-shrink: 0;
+        margin-left: 1em;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="site-main section-inner thin animated fadeIn">
+      <h1 class="text-4xl font-bold mt-5 mb-5">Posts</h1>
+      {
+        keys
+          .sort()
+          .reverse()
+          .map((postYear) => (
+            <section class="posts-group">
+              <div id={postYear} class="post-year">
+                {postYear}
+              </div>
+              <ul class="posts-list">
+                {postsMap[postYear].map((post) => (
+                  <li class="post-item">
+										<a href={`/posts/${post.slug}`}>
+                    <span class="post-title">{post.data.title}</span>
+                    <span class="post-day">
+                      <FormattedDate date={post.data.pubDate} />
+                    </span>
+                  </a>
+
+										</li>
+                ))}
+              </ul>
+            </section>
+          ))
+      }
+    </main>
+    <Footer />
+  </body>
+</html>
