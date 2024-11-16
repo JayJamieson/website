@@ -13,19 +13,17 @@ const [title, description] = ["About", "Me myself and my code"];
     <BaseHead title={title} description={description} />
   </head>
   <body>
-    <Header position="fixed bottom-0 w-full"/>
-    <main class="animated fadeIn site-main section-inner thin">
+    <Header/>
+    <main class="site-main section-inner thin">
       <article>
-        <h1 class="mt-6 mb-6 text-[2rem] font-bold">{title}</h1>
+        <h1>{title}</h1>
         <div>
-          <p class="mt-4 mb-4">
-            I am Senior Software Engineer based in New Zealand. I have ADHD and
-            tend to start many passion projects with plenty of research. A lot of my
-						projects tend to focus on learning underlying technology used in real world
-						systems.
+          <p>
+            I am Senior Software Engineer based in New Zealand. I tend to start many passion projects after plenty of research.
+            A lot of my	projects tend to focus on learning the underlying technology used rather than production ready project.
           </p>
-          <p class="mt-4 mb-4">
-            I have mainly focus on writing backend systems and occasionaly touch
+          <p>
+            I mainly focus on writing backend systems and occasionaly touch
             some front-end (this website being one of the front-ends 😅).
           </p>
         </div>

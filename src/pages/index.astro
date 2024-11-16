@@ -10,16 +10,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <div id="spotlight" class="animated fadeIn">
+    <div id="spotlight">
       <div id="home-center">
         <h1 id="home-title">Jay</h1>
-        <p id="home-subtitle">
-          I build things for the internet
-        </p>
+        <p id="home-subtitle">I build things for the internet</p>
         <div id="home-social">
           <a
             href="https://twitter.com/_JayTheDev"
-
             target="_blank"
             rel="noopener me"
             title="Twitter"
@@ -62,13 +59,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
             >
           </a>
         </div>
-				<nav id="home-nav">
-					<a href="/posts" class="block text-center mt-2">Posts</a>
-					<!-- <a href="/projects" class="block text-center mt-2">Projects</a> -->
-					<a href="/about" class="block text-center mt-2">About</a>
-			</nav>
+        <nav id="home-nav">
+          <a href="/posts">Posts</a>
+          <a href="/projects">Projects</a>
+          <a href="/about">About</a>
+        </nav>
       </div>
-			<Footer/>
+      <Footer />
     </div>
   </body>
 </html>
