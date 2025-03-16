@@ -12,7 +12,11 @@ const postsMap = (await getCollection("posts")).reduce(
   (groups: Record<string, Post[]>, item: Post) => {
     const name = `${item.data.pubDate.getFullYear()}`;
     const group = groups[name] || (groups[name] = []);
-    group.push(item);
+
+    if (!item.data.draft) {
+      group.push(item);
+    }
+
     return groups;
   },
   {}
